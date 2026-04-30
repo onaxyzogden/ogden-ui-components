@@ -1,6 +1,6 @@
 {
   "name": "@ogden/ui-components",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared React UI components for the OGDEN ecosystem (MILOS, Atlas, Moontrance)",
   "keywords": [
     "react",
@@ -9,7 +9,8 @@
     "islamic",
     "ogden",
     "milos",
-    "atlas"
+    "atlas",
+    "bbos"
   ],
   "author": "Yousef Abdelsalam <yousef@ogden.ag>",
   "license": "MIT",
@@ -22,14 +23,19 @@
     "url": "git+https://github.com/onaxyzogden/ogden-ui-components.git"
   },
   "type": "module",
-  "main": "./dist/ogden-ui-components.cjs.js",
-  "module": "./dist/ogden-ui-components.es.js",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
   "exports": {
     ".": {
-      "import": "./dist/ogden-ui-components.es.js",
-      "require": "./dist/ogden-ui-components.cjs.js"
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
     },
-    "./style.css": "./dist/ogden-ui-components.css"
+    "./bbos": {
+      "import": "./dist/bbos.es.js",
+      "require": "./dist/bbos.cjs.js"
+    },
+    "./style.css": "./dist/ogden-ui-components.css",
+    "./bbos.css": "./dist/ogden-ui-components-bbos.css"
   },
   "files": [
     "dist",

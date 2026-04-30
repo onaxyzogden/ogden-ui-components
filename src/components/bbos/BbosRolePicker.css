@@ -1,0 +1,75 @@
+.bbos-role-picker {
+  position: relative;
+  display: inline-block;
+}
+
+.bbos-role-picker__trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  color: var(--text2);
+}
+
+.bbos-role-picker__trigger:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+.bbos-role-picker__label {
+  font-size: var(--text-2xs);
+}
+
+.bbos-role-picker__list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  min-width: 240px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+  padding: 4px;
+  outline: none;
+}
+
+.bbos-role-picker__option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 8px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: var(--text-sm-plus);
+  border-radius: var(--radius-sm);
+}
+
+.bbos-role-picker__option--selected {
+  background: var(--bg2);
+}
+
+.bbos-role-picker__option--active {
+  background: var(--bg2);
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.bbos-role-picker__option-label {
+  color: var(--text);
+  flex: 1;
+}
+
+.bbos-role-picker__option-desc {
+  color: var(--text3);
+  font-size: var(--text-2xs);
+}

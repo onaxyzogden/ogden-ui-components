@@ -1,0 +1,124 @@
+.bbos-tpl-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.bbos-tpl-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  width: 420px;
+  max-width: 90vw;
+}
+
+.bbos-tpl-title {
+  margin-bottom: var(--space-4);
+}
+
+.bbos-tpl-name {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-4);
+}
+
+.bbos-tpl-section-label {
+  font-size: 0.8rem;
+  color: var(--text2);
+  margin-bottom: var(--space-2);
+}
+
+.bbos-tpl-select {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-3);
+}
+
+.bbos-tpl-type-row {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.bbos-tpl-type-btn {
+  flex: 1;
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+}
+
+.bbos-tpl-type-btn p {
+  font-size: 0.75rem;
+  color: var(--text2);
+  margin: 0;
+}
+
+.bbos-tpl-type-btn--active {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.bbos-tpl-type-btn--bbos.bbos-tpl-type-btn--active {
+  border-color: #c9a05a;
+  background: color-mix(in srgb, #c9a05a 8%, transparent);
+}
+
+.bbos-tpl-type-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.bbos-tpl-type-head strong {
+  font-size: 0.85rem;
+}
+
+.bbos-tpl-type-icon-bbos {
+  color: #c9a05a;
+}
+
+.bbos-tpl-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.bbos-tpl-btn {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.bbos-tpl-btn--ghost {
+  background: transparent;
+  color: var(--text2);
+}
+
+.bbos-tpl-btn--primary {
+  background: var(--primary, #4f46e5);
+  color: white;
+  border-color: transparent;
+}
