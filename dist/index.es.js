@@ -112,64 +112,64 @@ var C = (e, t) => {
 function ee(e) {
 	return e.completedAt || e.columnId?.endsWith("_done") ? "#22c55e" : !e.columnId?.endsWith("_to_do") && !e.columnId?.endsWith("_todo") ? "#F59E0B" : "var(--border2, rgba(255,255,255,0.12))";
 }
-function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLevel: m, onLevelChange: g, currentPillarId: _, compact: v, levelDescriptions: y, levels: b, onSegmentClick: x, onSubsegClick: T, taskColorFn: te, gateIndicators: ne, tooltipsEnabled: re = !0, showDiacritics: ie = !0 } = {}) {
-	let ae = o(), [oe, E] = a(0), D = b || w, O = m ? Math.max(0, D.findIndex((e) => e.key === m)) : oe, [k, A] = a(null), j = () => {
-		A("right"), setTimeout(() => A(null), 300), g ? g(D[O - 1]?.key) : E(O - 1);
-	}, se = () => {
-		A("left"), setTimeout(() => A(null), 300), g ? g(D[O + 1]?.key) : E(O + 1);
-	}, M = i(null), ce = i(null), [N, P] = a(!1), F = t(() => {
-		let e = M.current, t = ce.current;
+function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLevel: m, onLevelChange: g, currentPillarId: _, compact: v, levelDescriptions: y, levels: b, onSegmentClick: x, onSubsegClick: T, taskColorFn: te, gateIndicators: E, tooltipsEnabled: D = !0, showDiacritics: O = !0 } = {}) {
+	let k = o(), [A, j] = a(0), M = b || w, N = m ? Math.max(0, M.findIndex((e) => e.key === m)) : A, [P, F] = a(null), I = () => {
+		F("right"), setTimeout(() => F(null), 300), g ? g(M[N - 1]?.key) : j(N - 1);
+	}, ne = () => {
+		F("left"), setTimeout(() => F(null), 300), g ? g(M[N + 1]?.key) : j(N + 1);
+	}, L = i(null), re = i(null), [ie, R] = a(!1), ae = t(() => {
+		let e = L.current, t = re.current;
 		if (!e || !t || !v) return;
 		let n = (e.offsetWidth - (parseFloat(getComputedStyle(e).gap) || 16) * 2) * (2.8 / 4.8), i = e.querySelector(".fln__center");
 		if (!i) return;
 		let a = getComputedStyle(i), o = parseFloat(a.paddingLeft) + parseFloat(a.paddingRight), s = parseFloat(getComputedStyle(t).gap) || 8, c = (n - o - s * (r.length - 1)) / r.length, l = t.querySelectorAll(".fln__segment-nav");
 		for (let e of l) if (e.scrollWidth >= c * .9) {
-			P(!0);
+			R(!0);
 			return;
 		}
-		P(!1);
+		R(!1);
 	}, [v, r.length]);
 	n(() => {
-		let e = M.current;
+		let e = L.current;
 		if (!e || !v) return;
-		let t = new ResizeObserver(F);
-		return t.observe(e), F(), () => t.disconnect();
-	}, [v, F]);
-	let I = y ? D.map((e) => ({
+		let t = new ResizeObserver(ae);
+		return t.observe(e), ae(), () => t.disconnect();
+	}, [v, ae]);
+	let oe = y ? M.map((e) => ({
 		...e,
 		...y[e.key]
-	})) : D, L = I[O], R = I[O - 1] ?? null, z = I[O + 1] ?? null, B = te || ee, V = h((e) => e.hoveredPillar), H = h((e) => e.setHoveredPillar);
+	})) : M, z = oe[N], B = oe[N - 1] ?? null, V = oe[N + 1] ?? null, se = te || ee, H = h((e) => e.hoveredPillar), U = h((e) => e.setHoveredPillar);
 	return /* @__PURE__ */ p("div", {
-		ref: M,
-		className: `fln${v ? " fln--compact" : ""}${N ? " fln--stacked" : ""}`,
+		ref: L,
+		className: `fln${v ? " fln--compact" : ""}${ie ? " fln--stacked" : ""}`,
 		children: [
 			/* @__PURE__ */ f("div", {
-				className: `fln__side fln__side--left${R ? " fln__side--active" : ""}`,
-				onClick: () => R && j(),
-				role: R ? "button" : void 0,
-				tabIndex: R ? 0 : void 0,
-				"aria-label": R ? `Navigate to previous level: ${R.title}` : void 0,
-				onKeyDown: R ? (e) => e.key === "Enter" && j() : void 0,
-				children: R ? /* @__PURE__ */ p(d, { children: [/* @__PURE__ */ p("div", {
+				className: `fln__side fln__side--left${B ? " fln__side--active" : ""}`,
+				onClick: () => B && I(),
+				role: B ? "button" : void 0,
+				tabIndex: B ? 0 : void 0,
+				"aria-label": B ? `Navigate to previous level: ${B.title}` : void 0,
+				onKeyDown: B ? (e) => e.key === "Enter" && I() : void 0,
+				children: B ? /* @__PURE__ */ p(d, { children: [/* @__PURE__ */ p("div", {
 					className: "fln__side-text",
 					children: [
 						/* @__PURE__ */ f("span", {
 							className: "fln__side-label",
-							style: { color: R.color },
-							children: R.label
+							style: { color: B.color },
+							children: B.label
 						}),
 						/* @__PURE__ */ f("span", {
 							className: "fln__side-subtitle",
-							children: R.subtitle
+							children: B.subtitle
 						}),
 						/* @__PURE__ */ f("span", {
 							className: "fln__side-title",
-							children: R.title
+							children: B.title
 						})
 					]
 				}), /* @__PURE__ */ f(s, {
 					className: "fln__chevron",
-					style: { color: R.color },
+					style: { color: B.color },
 					size: 36,
 					strokeWidth: 1.5
 				})] }) : /* @__PURE__ */ f("div", { className: "fln__side-empty" })
@@ -178,43 +178,43 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 				className: "fln__center",
 				"aria-live": "polite",
 				children: /* @__PURE__ */ p("div", {
-					className: `fln__level-content${k ? ` fln__level-content--${k}` : ""}`,
+					className: `fln__level-content${P ? ` fln__level-content--${P}` : ""}`,
 					children: [
 						/* @__PURE__ */ p("div", {
 							className: "fln__center-head",
 							children: [/* @__PURE__ */ f("span", {
 								className: "fln__center-label",
-								style: { color: L.color },
-								children: L.label
+								style: { color: z.color },
+								children: z.label
 							}), /* @__PURE__ */ f("span", {
 								className: "fln__center-subtitle",
-								children: L.subtitle
+								children: z.subtitle
 							})]
 						}),
 						/* @__PURE__ */ f("h2", {
 							className: "fln__center-title",
-							children: L.title
+							children: z.title
 						}),
 						/* @__PURE__ */ f("p", {
 							className: "fln__center-desc",
-							children: L.desc
+							children: z.desc
 						}),
 						/* @__PURE__ */ f("div", {
 							className: "fln__segments",
-							ref: ce,
+							ref: re,
 							children: r.map(({ id: t, label: n, route: r, glossaryEntry: i }) => {
 								let a = l[t] || [], o = _ === t, s = () => {
-									x ? x(t, L.key) : (u && C(u, L.key), r && ae(r));
-								}, c = ne?.find((e) => e.afterSegmentId === t);
+									x ? x(t, z.key) : (u && C(u, z.key), r && k(r));
+								}, c = E?.find((e) => e.afterSegmentId === t);
 								return /* @__PURE__ */ p(e, { children: [/* @__PURE__ */ p("div", {
-									className: `fln__segment-col${o ? " fln__segment-col--current" : ""}${V === t ? " fln__segment-col--hover-sync" : ""}`,
-									style: { "--seg-color": L.color },
+									className: `fln__segment-col${o ? " fln__segment-col--current" : ""}${H === t ? " fln__segment-col--hover-sync" : ""}`,
+									style: { "--seg-color": z.color },
 									"data-pillar-id": t,
 									onClick: s,
-									onMouseEnter: () => H(t),
-									onMouseLeave: () => H(null),
-									onFocus: () => H(t),
-									onBlur: () => H(null),
+									onMouseEnter: () => U(t),
+									onMouseLeave: () => U(null),
+									onFocus: () => U(t),
+									onBlur: () => U(null),
 									role: "button",
 									tabIndex: 0,
 									onKeyDown: (e) => e.key === "Enter" && s(),
@@ -222,11 +222,11 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 										className: "fln__segment-bar",
 										children: a.length > 0 ? a.map((e) => /* @__PURE__ */ f("button", {
 											className: "fln__subseg",
-											style: { background: B(e) },
+											style: { background: se(e) },
 											title: e.title,
 											"aria-label": `Task: ${e.title}`,
 											onClick: (n) => {
-												n.stopPropagation(), T ? T(e.id, t) : (u && C(u, L.key), r && ae(`${r}?task=${e.id}`));
+												n.stopPropagation(), T ? T(e.id, t) : (u && C(u, z.key), r && k(`${r}?task=${e.id}`));
 											}
 										}, e.id)) : /* @__PURE__ */ f("div", { className: "fln__subseg fln__subseg--empty" })
 									}), /* @__PURE__ */ f("button", {
@@ -236,8 +236,8 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 										},
 										children: i ? /* @__PURE__ */ f(S, {
 											entry: i,
-											tooltipsEnabled: re,
-											showDiacritics: ie,
+											tooltipsEnabled: D,
+											showDiacritics: O,
 											children: n
 										}) : n
 									})]
@@ -247,7 +247,7 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 									title: `${c.label} (${c.status})`,
 									"aria-label": `Gate: ${c.label} — ${c.status}`,
 									onClick: () => {
-										x && x(c.afterSegmentId, L.key);
+										x && x(c.afterSegmentId, z.key);
 									},
 									children: /* @__PURE__ */ f("span", {
 										className: "fln__gate-diamond",
@@ -257,18 +257,18 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 							})
 						})
 					]
-				}, O)
+				}, N)
 			}),
 			/* @__PURE__ */ f("div", {
-				className: `fln__side fln__side--right${z ? " fln__side--active" : ""}`,
-				onClick: () => z && se(),
-				role: z ? "button" : void 0,
-				tabIndex: z ? 0 : void 0,
-				"aria-label": z ? `Navigate to next level: ${z.title}` : void 0,
-				onKeyDown: z ? (e) => e.key === "Enter" && se() : void 0,
-				children: z ? /* @__PURE__ */ p(d, { children: [/* @__PURE__ */ f(c, {
+				className: `fln__side fln__side--right${V ? " fln__side--active" : ""}`,
+				onClick: () => V && ne(),
+				role: V ? "button" : void 0,
+				tabIndex: V ? 0 : void 0,
+				"aria-label": V ? `Navigate to next level: ${V.title}` : void 0,
+				onKeyDown: V ? (e) => e.key === "Enter" && ne() : void 0,
+				children: V ? /* @__PURE__ */ p(d, { children: [/* @__PURE__ */ f(c, {
 					className: "fln__chevron",
-					style: { color: z.color },
+					style: { color: V.color },
 					size: 36,
 					strokeWidth: 1.5
 				}), /* @__PURE__ */ p("div", {
@@ -276,16 +276,16 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 					children: [
 						/* @__PURE__ */ f("span", {
 							className: "fln__side-label",
-							style: { color: z.color },
-							children: z.label
+							style: { color: V.color },
+							children: V.label
 						}),
 						/* @__PURE__ */ f("span", {
 							className: "fln__side-subtitle",
-							children: z.subtitle
+							children: V.subtitle
 						}),
 						/* @__PURE__ */ f("span", {
 							className: "fln__side-title",
-							children: z.title
+							children: V.title
 						})
 					]
 				})] }) : /* @__PURE__ */ f("div", { className: "fln__side-empty" })
@@ -310,8 +310,8 @@ function te(e, t) {
 }
 //#endregion
 //#region src/hooks/useMithaqHold.js
-var ne = 1500, re = 280, ie = (e) => e * e;
-function ae({ onActivate: e, disabled: r = !1 } = {}) {
+var E = 1500, D = 280, O = (e) => e * e;
+function k({ onActivate: e, disabled: r = !1 } = {}) {
 	let [o, s] = a(0), [c, l] = a(!1), u = i(null), d = i(null), f = i(0), p = i(0), m = i(!1), h = i(null), g = i(0), _ = i(e), v = i(r);
 	n(() => {
 		_.current = e;
@@ -326,7 +326,7 @@ function ae({ onActivate: e, disabled: r = !1 } = {}) {
 	n(() => {
 		let e = (t) => {
 			if (d.current == null) return;
-			let n = t - d.current, r = f.current, i = ne * (1 - r), a = Math.min(n / Math.max(i, 1), 1), o = r + (1 - r) * a;
+			let n = t - d.current, r = f.current, i = E * (1 - r), a = Math.min(n / Math.max(i, 1), 1), o = r + (1 - r) * a;
 			if (b(o), o >= 1) {
 				l(!1), d.current = null, y(), typeof _.current == "function" && _.current(), b(0);
 				return;
@@ -334,8 +334,8 @@ function ae({ onActivate: e, disabled: r = !1 } = {}) {
 			u.current = requestAnimationFrame(e);
 		}, t = (e) => {
 			if (h.current == null) return;
-			let n = Math.min((e - h.current) / re, 1);
-			if (b(g.current * (1 - ie(n))), n >= 1) {
+			let n = Math.min((e - h.current) / D, 1);
+			if (b(g.current * (1 - O(n))), n >= 1) {
 				b(0), m.current = !1, h.current = null, y();
 				return;
 			}
@@ -374,14 +374,14 @@ function ae({ onActivate: e, disabled: r = !1 } = {}) {
 }
 //#endregion
 //#region src/stores/mithaqStore.js
-function oe(e) {
+function A(e) {
 	if (!e) return !1;
 	let t = new Date(e);
 	if (Number.isNaN(t.getTime())) return !1;
 	let n = new Date(t);
 	return n.setHours(5, 0, 0, 0), t.getHours() >= 5 && n.setDate(n.getDate() + 1), /* @__PURE__ */ new Date() < n;
 }
-var E = l(m((e, t) => ({
+var j = l(m((e, t) => ({
 	activations: {},
 	activate: (t) => e((e) => ({ activations: {
 		...e.activations,
@@ -393,12 +393,12 @@ var E = l(m((e, t) => ({
 	}),
 	isActivated: (e) => {
 		let n = t().activations[e];
-		return oe(n?.activatedAt);
+		return A(n?.activatedAt);
 	}
 }), { name: "ogden-mithaq" }));
 //#endregion
 //#region src/components/MaqasidComparisonWheel/wheelColor.js
-function D(e) {
+function M(e) {
 	let t = e.replace("#", ""), n = t.length === 3 ? t.split("").map((e) => e + e).join("") : t, r = parseInt(n, 16);
 	return [
 		r >> 16 & 255,
@@ -406,42 +406,42 @@ function D(e) {
 		r & 255
 	];
 }
-function O(e) {
+function N(e) {
 	let t = e / 255;
 	return t <= .04045 ? t / 12.92 : ((t + .055) / 1.055) ** 2.4;
 }
-function k(e) {
+function P(e) {
 	let t = e <= .0031308 ? 12.92 * e : 1.055 * e ** (1 / 2.4) - .055;
 	return Math.max(0, Math.min(255, Math.round(t * 255)));
 }
-function A(e, t, n) {
-	let r = O(e), i = O(t), a = O(n), o = Math.cbrt(.4122214708 * r + .5363325363 * i + .0514459929 * a), s = Math.cbrt(.2119034982 * r + .6806995451 * i + .1073969566 * a), c = Math.cbrt(.0883024619 * r + .2817188376 * i + .6299787005 * a);
+function F(e, t, n) {
+	let r = N(e), i = N(t), a = N(n), o = Math.cbrt(.4122214708 * r + .5363325363 * i + .0514459929 * a), s = Math.cbrt(.2119034982 * r + .6806995451 * i + .1073969566 * a), c = Math.cbrt(.0883024619 * r + .2817188376 * i + .6299787005 * a);
 	return [
 		.2104542553 * o + .793617785 * s - .0040720468 * c,
 		1.9779984951 * o - 2.428592205 * s + .4505937099 * c,
 		.0259040371 * o + .7827717662 * s - .808675766 * c
 	];
 }
-function j(e, t, n) {
+function I(e, t, n) {
 	let r = e + .3963377774 * t + .2158037573 * n, i = e - .1055613458 * t - .0638541728 * n, a = e - .0894841775 * t - 1.291485548 * n, o = r * r * r, s = i * i * i, c = a * a * a;
 	return [
-		k(4.0767416621 * o - 3.3077115913 * s + .2309699292 * c),
-		k(-1.2684380046 * o + 2.6097574011 * s - .3413193965 * c),
-		k(-.0041960863 * o - .7034186147 * s + 1.707614701 * c)
+		P(4.0767416621 * o - 3.3077115913 * s + .2309699292 * c),
+		P(-1.2684380046 * o + 2.6097574011 * s - .3413193965 * c),
+		P(-.0041960863 * o - .7034186147 * s + 1.707614701 * c)
 	];
 }
-function se(e, t, n) {
+function ne(e, t, n) {
 	return [
 		e,
 		Math.sqrt(t * t + n * n),
 		Math.atan2(n, t)
 	];
 }
-function M(e, t, n) {
-	let [r, i] = [t * Math.cos(n), t * Math.sin(n)], [a, o, s] = j(e, r, i), c = (e) => e.toString(16).padStart(2, "0");
+function L(e, t, n) {
+	let [r, i] = [t * Math.cos(n), t * Math.sin(n)], [a, o, s] = I(e, r, i), c = (e) => e.toString(16).padStart(2, "0");
 	return `#${c(a)}${c(o)}${c(s)}`;
 }
-function ce(e) {
+function re(e) {
 	if (!e || typeof e != "string" || !e.startsWith("#")) return {
 		base: e,
 		stroke: e,
@@ -450,13 +450,13 @@ function ce(e) {
 		brightAura: e
 	};
 	try {
-		let [t, n, r] = D(e), [i, a, o] = A(t, n, r), [, s, c] = se(i, a, o);
+		let [t, n, r] = M(e), [i, a, o] = F(t, n, r), [, s, c] = ne(i, a, o);
 		return {
 			base: e,
-			stroke: M(.65, Math.min(s, .18), c),
-			shimmer: M(.72, Math.min(s * .85, .15), c),
-			hubTint: M(.1, Math.min(s * .3, .04), c),
-			brightAura: M(.78, Math.min(s * .9, .16), c)
+			stroke: L(.65, Math.min(s, .18), c),
+			shimmer: L(.72, Math.min(s * .85, .15), c),
+			hubTint: L(.1, Math.min(s * .3, .04), c),
+			brightAura: L(.78, Math.min(s * .9, .16), c)
 		};
 	} catch {
 		return {
@@ -470,10 +470,10 @@ function ce(e) {
 }
 //#endregion
 //#region src/components/MaqasidComparisonWheel/WheelWisdomTooltip.jsx
-var N = 260, P = 14;
-function F({ wisdom: e, x: t, y: n, levelColor: r, showDiacritics: i = !0 }) {
+var ie = 260, R = 14;
+function ae({ wisdom: e, x: t, y: n, levelColor: r, showDiacritics: i = !0 }) {
 	if (!e || typeof document > "u") return null;
-	let a = (typeof window < "u" ? window.innerWidth : 1024) - N - 8, o = Math.max(8, Math.min(a, t + P)), s = Math.max(8, n + P);
+	let a = (typeof window < "u" ? window.innerWidth : 1024) - ie - 8, o = Math.max(8, Math.min(a, t + R)), s = Math.max(8, n + R);
 	return u(/* @__PURE__ */ p("div", {
 		className: "wwt-card",
 		style: {
@@ -501,7 +501,7 @@ function F({ wisdom: e, x: t, y: n, levelColor: r, showDiacritics: i = !0 }) {
 }
 //#endregion
 //#region src/components/MaqasidComparisonWheel/MaqasidNextActionCard.jsx
-function I({ x: e, y: t, flip: n, levelColor: r, text: i, label: a = "Next", width: o = 160, height: s = 40, multiline: c = !1 }) {
+function oe({ x: e, y: t, flip: n, levelColor: r, text: i, label: a = "Next", width: o = 160, height: s = 40, multiline: c = !1 }) {
 	if (!i) return null;
 	let l = o, u = s;
 	return /* @__PURE__ */ f("foreignObject", {
@@ -527,13 +527,13 @@ function I({ x: e, y: t, flip: n, levelColor: r, text: i, label: a = "Next", wid
 }
 //#endregion
 //#region src/components/MaqasidComparisonWheel/MaqasidComparisonWheel.jsx
-var L = 200, R = 200, z = 56, B = 142, V = B, H = 184, le = (B + H) / 2, ue = 1e3;
-function U(e, t) {
+var z = 200, B = 200, V = 56, se = 142, H = se, U = 184, ce = (se + U) / 2, le = 1e3;
+function W(e, t) {
 	let n = t * Math.PI / 180;
-	return [L + e * Math.cos(n), R + e * Math.sin(n)];
+	return [z + e * Math.cos(n), B + e * Math.sin(n)];
 }
-function W(e, t, n, r) {
-	let [i, a] = U(t, n), [o, s] = U(t, r), [c, l] = U(e, n), [u, d] = U(e, r), f = +(r - n > 180);
+function ue(e, t, n, r) {
+	let [i, a] = W(t, n), [o, s] = W(t, r), [c, l] = W(e, n), [u, d] = W(e, r), f = +(r - n > 180);
 	return [
 		`M ${c} ${l}`,
 		`L ${i} ${a}`,
@@ -544,7 +544,7 @@ function W(e, t, n, r) {
 	].join(" ");
 }
 function de(e, t, n) {
-	let [r, i] = U(e, t), [a, o] = U(e, n);
+	let [r, i] = W(e, t), [a, o] = W(e, n);
 	return `M ${r} ${i} A ${e} ${e} 0 ${+(n - t > 180)} 1 ${a} ${o}`;
 }
 function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern: s = "dots", level: c = "core", segments: l = [], onReach100: u, mithaqDomain: m = null, pillarWisdom: g = null, nextActions: _ = null, forceHover: v = null, forceConverged: y = !1, centerLabelOverride: b = null, onSegmentSelect: x = null, onHoverChange: S = null, showNextCard: C = !0, showDiacritics: w = !0 }) {
@@ -554,12 +554,12 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 			return;
 		}
 		e?.route && ee(e.route, { viewTransition: !0 });
-	}, [ne, re] = a(null), [ie, oe] = a({
+	}, [E, D] = a(null), [O, A] = a({
 		x: 0,
 		y: 0
-	}), [D, O] = a(null), [k, A] = a(!1), j = i(null), [se, M] = a(0), N = h((e) => e.setHoveredPillar), P = h((e) => e.hoveredPillar);
-	n(() => () => N(null), [N]);
-	let fe = E((e) => e.activations), pe = E((e) => e.activate), G = r(() => {
+	}), [M, N] = a(null), [P, F] = a(!1), I = i(null), [ne, L] = a(0), ie = h((e) => e.setHoveredPillar), R = h((e) => e.hoveredPillar);
+	n(() => () => ie(null), [ie]);
+	let fe = j((e) => e.activations), pe = j((e) => e.activate), G = r(() => {
 		if (!m) return !0;
 		let e = fe[m];
 		if (!e?.activatedAt) return !1;
@@ -573,14 +573,14 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 		let e = setTimeout(() => me(!1), 850);
 		return () => clearTimeout(e);
 	}, [q]);
-	let { progress: he, isHolding: ge, bind: _e } = ae({
+	let { progress: he, isHolding: ge, bind: _e } = k({
 		disabled: !m || G,
 		onActivate: () => {
 			m && (pe(m), me(!0));
 		}
 	});
 	n(() => {
-		let e = requestAnimationFrame(() => A(!0));
+		let e = requestAnimationFrame(() => F(!0));
 		return () => cancelAnimationFrame(e);
 	}, []), n(() => {
 		if (!y) return;
@@ -589,31 +589,31 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 			cancelAnimationFrame(e), clearTimeout(t);
 		};
 	}, [y]), te(l, u);
-	let J = r(() => ce(t), [t]), Y = 360 / (l.length || 1), X = -90 - Y / 2, Z = v || ne || P, Q = Z ? l.findIndex((e) => e.id === Z) : -1, $ = Q >= 0 ? l[Q] : null;
+	let J = r(() => re(t), [t]), Y = 360 / (l.length || 1), X = -90 - Y / 2, Z = v || E || R, Q = Z ? l.findIndex((e) => e.id === Z) : -1, $ = Q >= 0 ? l[Q] : null;
 	n(() => {
 		S && S(Z || null);
 	}, [Z, S]);
 	let ve = Q >= 0 ? X + Q * Y + Y / 2 + 90 : null, ye = r(() => {
-		if (!P) return null;
-		let e = l.findIndex((e) => e.id === P);
+		if (!R) return null;
+		let e = l.findIndex((e) => e.id === R);
 		return e < 0 ? null : X + e * Y + Y / 2 + 90;
 	}, [
-		P,
+		R,
 		l,
 		X,
 		Y
-	]), be = ve ?? ye ?? se, xe = l.length ? Math.round(l.reduce((e, t) => e + (t.current || 0), 0) / l.length) : 0, Se = r(() => {
+	]), be = ve ?? ye ?? ne, xe = l.length ? Math.round(l.reduce((e, t) => e + (t.current || 0), 0) / l.length) : 0, Se = r(() => {
 		if (l.length < 2) return 1;
 		let e = l.reduce((e, t) => e + (t.current || 0), 0) / l.length, t = l.reduce((t, n) => t + ((n.current || 0) - e) ** 2, 0) / l.length;
 		return Math.max(0, Math.min(1, 1 - Math.sqrt(t) / 40));
 	}, [l]), Ce = $ ? $.tooltipText ? $.tooltipText : $.current >= 100 ? "Flourishing" : _?.[$.id]?.[c] || $.label : null, we = $?.tooltipLabel || "Next", Te = $?.tooltipWidth, Ee = $?.tooltipHeight, De = r(() => {
 		if (Q < 0) return null;
 		if ($?.tooltipText) return {
-			x: L - ($.tooltipWidth || 200) / 2,
+			x: z - ($.tooltipWidth || 200) / 2,
 			y: 440,
 			flip: !1
 		};
-		let e = X + Q * Y + Y / 2, [t, n] = U(H + 14, e), r = (e % 360 + 360) % 360;
+		let e = X + Q * Y + Y / 2, [t, n] = W(U + 14, e), r = (e % 360 + 360) % 360;
 		return {
 			x: t,
 			y: n,
@@ -625,18 +625,18 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 		Y,
 		$
 	]), Oe = $ ? $.label.toUpperCase() : b || e, ke = $ ? `${Math.round($.current)}%` : `${xe}%`, Ae = `mcw-pat-${s}`, je = (e) => {
-		j.current && clearTimeout(j.current), j.current = setTimeout(() => {
-			O(e);
-		}, ue);
+		I.current && clearTimeout(I.current), I.current = setTimeout(() => {
+			N(e);
+		}, le);
 	}, Me = () => {
-		j.current && clearTimeout(j.current), j.current = null, O(null);
+		I.current && clearTimeout(I.current), I.current = null, N(null);
 	};
 	n(() => () => {
-		j.current && clearTimeout(j.current);
+		I.current && clearTimeout(I.current);
 	}, []), n(() => {
 		let e = (e) => {
-			e.key === "Escape" && O(null);
-		}, t = () => O(null);
+			e.key === "Escape" && N(null);
+		}, t = () => N(null);
 		return window.addEventListener("keydown", e), window.addEventListener("scroll", t, !0), () => {
 			window.removeEventListener("keydown", e), window.removeEventListener("scroll", t, !0);
 		};
@@ -646,22 +646,22 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 	};
 	n(() => () => Pe(), []);
 	let Fe = (e, t) => {
-		Pe(), re(e.id), N(e.id), oe({
+		Pe(), D(e.id), ie(e.id), A({
 			x: t.clientX,
 			y: t.clientY
 		});
 		let n = l.findIndex((t) => t.id === e.id);
-		n >= 0 && M(X + n * Y + Y / 2 + 90), je(e.id);
+		n >= 0 && L(X + n * Y + Y / 2 + 90), je(e.id);
 	}, Ie = () => {
 		Pe(), Ne.current = setTimeout(() => {
-			re(null), N(null), Me(), Ne.current = null;
+			D(null), ie(null), Me(), Ne.current = null;
 		}, 90);
 	}, Le = (e, t) => {
-		oe({
+		A({
 			x: t.clientX,
 			y: t.clientY
-		}), D && D !== e.id && O(null);
-	}, Re = D && g ? g[D] : null;
+		}), M && M !== e.id && N(null);
+	}, Re = M && g ? g[M] : null;
 	return /* @__PURE__ */ p("div", {
 		className: "mcw-wrap",
 		children: [
@@ -685,11 +685,11 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 						/* @__PURE__ */ p("radialGradient", {
 							id: "mcw-progress-grad",
 							gradientUnits: "userSpaceOnUse",
-							cx: L,
-							cy: R,
-							r: V,
-							fx: L,
-							fy: R,
+							cx: z,
+							cy: B,
+							r: H,
+							fx: z,
+							fy: B,
 							children: [
 								/* @__PURE__ */ f("stop", {
 									offset: "0%",
@@ -716,9 +716,9 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 						/* @__PURE__ */ p("radialGradient", {
 							id: "mcw-progress-grad-dim",
 							gradientUnits: "userSpaceOnUse",
-							cx: L,
-							cy: R,
-							r: V,
+							cx: z,
+							cy: B,
+							r: H,
 							children: [/* @__PURE__ */ f("stop", {
 								offset: "0%",
 								stopColor: "#1a4a4e"
@@ -805,12 +805,12 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 						})
 					] }),
 					l.map((e, t) => {
-						let n = X + t * Y, r = X + (t + 1) * Y, i = Math.max(0, Math.min(100, e.current)), a = z + (V - z) * (i / 100), o = Z === e.id, s = i === 0, c = i >= 100, l = Math.round(i / 5), u = o ? " is-hovered" : "";
+						let n = X + t * Y, r = X + (t + 1) * Y, i = Math.max(0, Math.min(100, e.current)), a = V + (H - V) * (i / 100), o = Z === e.id, s = i === 0, c = i >= 100, l = Math.round(i / 5), u = o ? " is-hovered" : "";
 						return /* @__PURE__ */ p("g", {
 							role: e.route ? "button" : "img",
 							tabIndex: e.route ? 0 : void 0,
 							"aria-label": `${e.label}: ${Math.round(e.current)}%${e.route ? " — open submodule" : ""}`,
-							className: `mcw-sector${k ? " is-mounted" : ""}${u}`,
+							className: `mcw-sector${P ? " is-mounted" : ""}${u}`,
 							style: {
 								cursor: e.route ? "pointer" : "default",
 								animationDelay: `${t * 90}ms`
@@ -824,16 +824,16 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 							},
 							children: [
 								/* @__PURE__ */ f("path", {
-									d: W(z, V, n, r),
+									d: ue(V, H, n, r),
 									fill: "url(#mcw-progress-grad-dim)",
 									className: `mcw-seg-bg${u}`
 								}),
 								s && /* @__PURE__ */ f("path", {
-									d: W(z + 4, V - 4, n, r),
+									d: ue(V + 4, H - 4, n, r),
 									className: `mcw-seg-empty${u}`
 								}),
 								i > 0 && /* @__PURE__ */ p(d, { children: [/* @__PURE__ */ f("path", {
-									d: W(z, a, n, r),
+									d: ue(V, a, n, r),
 									fill: e.color || "url(#mcw-progress-grad)",
 									className: `mcw-seg-current${u}`,
 									style: {
@@ -841,13 +841,13 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 										opacity: e.color ? .85 : void 0
 									}
 								}, `fill-${e.id}-${l}`), /* @__PURE__ */ f("path", {
-									d: W(z, a, n, r),
+									d: ue(V, a, n, r),
 									fill: `url(#${Ae})`,
 									className: `mcw-seg-pattern${u}`,
 									pointerEvents: "none"
 								})] }),
 								c && /* @__PURE__ */ f("path", {
-									d: de(V - 2, n + 1, r - 1),
+									d: de(H - 2, n + 1, r - 1),
 									pathLength: "1",
 									className: `mcw-seg-complete${u}`,
 									pointerEvents: "none"
@@ -858,7 +858,7 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 					l.map((e, t) => {
 						let n = X + t * Y, r = n + Y, i = Z === e.id ? " is-hovered" : "";
 						return /* @__PURE__ */ f("path", {
-							d: W(B, H, n, r),
+							d: ue(se, U, n, r),
 							fill: e.color || "url(#mcw-band-level)",
 							stroke: "rgba(10, 20, 24, 0.85)",
 							strokeWidth: "1.5",
@@ -877,21 +877,21 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 						}, `band-${e.id}`);
 					}),
 					/* @__PURE__ */ f("circle", {
-						cx: L,
-						cy: R,
-						r: H,
+						cx: z,
+						cy: B,
+						r: U,
 						className: "mcw-outer-stroke"
 					}),
 					/* @__PURE__ */ f("circle", {
-						cx: L,
-						cy: R,
-						r: B,
+						cx: z,
+						cy: B,
+						r: se,
 						className: "mcw-outer-stroke"
 					}),
 					l.map((e, t) => {
 						let n = e.Icon;
 						if (!n) return null;
-						let [r, i] = U(le, X + t * Y + Y / 2), a = Z === e.id, o = (e.current || 0) >= 100;
+						let [r, i] = W(ce, X + t * Y + Y / 2), a = Z === e.id, o = (e.current || 0) >= 100;
 						return /* @__PURE__ */ p("g", {
 							className: `mcw-pillar-vessel${a ? " is-hovered" : ""}${G || o || y ? " is-lit" : ""}${o ? " is-complete" : ""}`,
 							style: {
@@ -924,10 +924,10 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 						className: `mcw-needle${Z && !K ? " is-active" : ""}`,
 						style: {
 							transform: `rotate(${be}deg)`,
-							transformOrigin: `${L}px ${R}px`
+							transformOrigin: `${z}px ${B}px`
 						},
 						pointerEvents: "none",
-						children: /* @__PURE__ */ f("path", { d: `M ${L} ${R - z + 1} L ${L - 4} ${R - z - 7} L ${L + 4} ${R - z - 7} Z` })
+						children: /* @__PURE__ */ f("path", { d: `M ${z} ${B - V + 1} L ${z - 4} ${B - V - 7} L ${z + 4} ${B - V - 7} Z` })
 					}),
 					/* @__PURE__ */ p("g", {
 						className: `mcw-hub-group${ge ? " is-holding" : ""}${K ? " is-dormant" : ""}`,
@@ -939,22 +939,22 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 						} : { pointerEvents: "none" },
 						children: [
 							/* @__PURE__ */ f("circle", {
-								cx: L,
-								cy: R,
-								r: z,
+								cx: z,
+								cy: B,
+								r: V,
 								className: `mcw-hub${Z && !K ? " is-active" : ""}`
 							}),
 							/* @__PURE__ */ f("circle", {
-								cx: L,
-								cy: R,
-								r: z - 4,
+								cx: z,
+								cy: B,
+								r: V - 4,
 								className: "mcw-hub-inner"
 							}),
 							m && !G && /* @__PURE__ */ f("circle", {
 								className: "mcw-mithaq-ring",
-								cx: L,
-								cy: R,
-								r: z + 4,
+								cx: z,
+								cy: B,
+								r: V + 4,
 								fill: "none",
 								stroke: J.brightAura,
 								strokeWidth: 2,
@@ -962,12 +962,12 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 								pathLength: "1",
 								strokeDasharray: "1",
 								strokeDashoffset: 1 - he,
-								transform: `rotate(-90 ${L} ${R})`,
+								transform: `rotate(-90 ${z} ${B})`,
 								pointerEvents: "none"
 							}),
 							/* @__PURE__ */ f("text", {
-								x: L,
-								y: K ? R - 6 : R - 10,
+								x: z,
+								y: K ? B - 6 : B - 10,
 								className: `mcw-hub-label${Z && !K ? " is-active" : ""}`,
 								textAnchor: "middle",
 								dominantBaseline: "middle",
@@ -975,8 +975,8 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 								children: Oe
 							}),
 							!K && /* @__PURE__ */ f("text", {
-								x: L,
-								y: R + 10,
+								x: z,
+								y: B + 10,
 								className: "mcw-hub-readout",
 								textAnchor: "middle",
 								dominantBaseline: "middle",
@@ -984,8 +984,8 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 								children: ke
 							}),
 							K && /* @__PURE__ */ f("text", {
-								x: L,
-								y: R + 12,
+								x: z,
+								y: B + 12,
 								className: "mcw-hub-hint",
 								textAnchor: "middle",
 								dominantBaseline: "middle",
@@ -994,7 +994,7 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 							})
 						]
 					}),
-					C && De && Ce && !K && /* @__PURE__ */ f(I, {
+					C && De && Ce && !K && /* @__PURE__ */ f(oe, {
 						x: De.x,
 						y: De.y,
 						flip: De.flip,
@@ -1007,10 +1007,10 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 					})
 				]
 			}),
-			Re && !K && /* @__PURE__ */ f(F, {
+			Re && !K && /* @__PURE__ */ f(ae, {
 				wisdom: Re,
-				x: ie.x,
-				y: ie.y,
+				x: O.x,
+				y: O.y,
 				levelColor: J.base,
 				showDiacritics: w
 			}),
@@ -1024,6 +1024,195 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 	});
 }
 //#endregion
-export { S as IslamicTerm, T as LevelNavigator, fe as MaqasidComparisonWheel, I as MaqasidNextActionCard, F as WheelWisdomTooltip, ce as deriveWheelPalette, v as formatArabic, _ as stripDiacritics, te as useMilestoneWatcher, ae as useMithaqHold, E as useMithaqStore, h as useWheelHoverStore };
+//#region src/components/educational/MaqasidLevelOverview.jsx
+var pe = {
+	core: {
+		color: "#C8A96E",
+		pattern: "dots"
+	},
+	growth: {
+		color: "#4ab8a8",
+		pattern: "stripes"
+	},
+	excellence: {
+		color: "#8b5cf6",
+		pattern: "crosshatch"
+	}
+};
+function G(e) {
+	return e._pillarAccent || "var(--border2)";
+}
+function K({ pillars: e = [], pillarTasks: t = {}, progressMap: n = {}, level: r, onLevelChange: i, onSegmentClick: o, onSubsegClick: s, onReach100: c, storageKey: l = "maqasid_level", taskColorFn: u }) {
+	let [d, m] = a("core"), h = r ?? d, g = pe[h] || pe.core, _ = (e) => {
+		e && (r === void 0 && m(e), i?.(e));
+	}, v = e.map((e) => ({
+		...e,
+		current: n[e.id]?.pct ?? 0
+	}));
+	return /* @__PURE__ */ p("div", {
+		className: "flo flo--dashboard",
+		style: { "--level-color": g.color },
+		children: [/* @__PURE__ */ f(T, {
+			compact: !0,
+			controlledLevel: h,
+			onLevelChange: _,
+			pillars: e,
+			storageKey: l,
+			pillarTasks: t,
+			taskColorFn: u ?? G,
+			onSegmentClick: o,
+			onSubsegClick: s
+		}), /* @__PURE__ */ f("section", {
+			className: "flo__section flo__section--wheel motif-soft-glass motif-shimmer-border",
+			"aria-label": "Maqasid pattern at this tier",
+			children: /* @__PURE__ */ f("div", {
+				className: "flo__wheel",
+				children: /* @__PURE__ */ f(fe, {
+					centerLabel: "MAQASID",
+					levelColor: g.color,
+					level: h,
+					levelPattern: g.pattern,
+					segments: v,
+					onReach100: c
+				})
+			})
+		})]
+	});
+}
+//#endregion
+//#region src/components/educational/PillarLevelPage.jsx
+var q = [
+	"core",
+	"growth",
+	"excellence"
+], me = {
+	core: "#C8A96E",
+	growth: "#4ab8a8",
+	excellence: "#8b5cf6"
+};
+function he(e, t) {
+	try {
+		let n = localStorage.getItem(e);
+		return n === null ? t : JSON.parse(n);
+	} catch {
+		return t;
+	}
+}
+function ge(e, t) {
+	try {
+		localStorage.setItem(e, JSON.stringify(t));
+	} catch {}
+}
+function _e({ pillarKey: e, pillarModuleMap: t = {}, boardPrefix: o, storageKey: s, pillars: c = [], levelRoutes: l = {}, levelDescriptions: u, getProject: d, onMount: m, onBoardChange: h, renderBoard: g, renderTaskPanel: _, renderAyahEffect: v }) {
+	let [y, b] = a(e), [x, S] = a(null), [C, w] = a(() => {
+		if (!s) return "core";
+		let e = he(s, "core");
+		return q.includes(e) ? e : "core";
+	}), ee = i(null), te = (e) => {
+		let t = q.indexOf(C), n = q.indexOf(e);
+		t !== n && (ee.current = n > t ? "left" : "right"), w(e), s && ge(s, e);
+	}, E = `${o}_${y}_${C}`;
+	n(() => {
+		let e = q.map((e) => `${o}_${y}_${e}`);
+		m?.(e);
+	}, []), n(() => {
+		h?.(E);
+	}, [E, h]);
+	let D = d?.(E) ?? null, O = i(D);
+	D && (O.current = D);
+	let k = D || O.current, A = D ? E : O.current?.id, [j, M] = a(null), N = i(null), P = i(E);
+	n(() => {
+		if (P.current === E) return;
+		let e = d?.(P.current) ?? null;
+		P.current = E, e && (M(e), clearTimeout(N.current), N.current = setTimeout(() => M(null), 320));
+	}, [E, d]);
+	let F = t[y] ?? y, I = r(() => {
+		let e = {};
+		for (let [n, r] of Object.entries(t)) e[r] = n;
+		return e;
+	}, [t]);
+	return /* @__PURE__ */ p("div", {
+		className: "fpb-page-wrapper",
+		children: [
+			v?.({
+				boardPrefix: o,
+				pillarKey: y
+			}),
+			/* @__PURE__ */ f(T, {
+				compact: !0,
+				controlledLevel: C,
+				onLevelChange: te,
+				currentPillarId: F,
+				pillars: c,
+				storageKey: s,
+				levelRoutes: l,
+				levelDescriptions: u,
+				onSegmentClick: (e) => {
+					let t = I[e] || e;
+					if (t === y) return;
+					let n = c.find((t) => t.id === e)?.route;
+					b(t), n && window.history.replaceState(null, "", n);
+				},
+				onSubsegClick: (e, t) => {
+					let n = I[t] || t, r = d?.(`${o}_${n}_${C}`) ?? null;
+					r && S({
+						taskId: e,
+						project: r
+					});
+				}
+			}),
+			x?.project && _?.({
+				taskId: x.taskId,
+				project: x.project,
+				accentColor: me[C] || x.project.color,
+				onClose: () => S(null)
+			}),
+			/* @__PURE__ */ f("div", {
+				className: "fpb-layout",
+				children: /* @__PURE__ */ p("div", {
+					className: "fpb-content",
+					children: [j && j.id !== A && /* @__PURE__ */ f("div", {
+						className: "fpb-content__layer fpb-content__layer--out",
+						children: g?.({
+							boardId: j.id,
+							project: j
+						})
+					}, j.id), k ? /* @__PURE__ */ f("div", {
+						className: "fpb-content__layer fpb-content__layer--in",
+						children: g?.({
+							boardId: A,
+							project: k
+						})
+					}, A) : /* @__PURE__ */ p("div", {
+						className: "fpb-content__layer",
+						style: {
+							padding: "var(--space-6)",
+							display: "flex",
+							flexDirection: "column",
+							gap: "var(--space-4)"
+						},
+						children: [/* @__PURE__ */ f("div", {
+							className: "fpb-skeleton",
+							style: {
+								height: 80,
+								background: "var(--bg3, rgba(255,255,255,0.06))",
+								borderRadius: "var(--radius-lg, 8px)"
+							}
+						}), /* @__PURE__ */ f("div", {
+							className: "fpb-skeleton",
+							style: {
+								height: 80,
+								background: "var(--bg3, rgba(255,255,255,0.06))",
+								borderRadius: "var(--radius-lg, 8px)"
+							}
+						})]
+					})]
+				})
+			})
+		]
+	});
+}
+//#endregion
+export { S as IslamicTerm, T as LevelNavigator, fe as MaqasidComparisonWheel, K as MaqasidLevelOverview, oe as MaqasidNextActionCard, _e as PillarLevelPage, ae as WheelWisdomTooltip, re as deriveWheelPalette, v as formatArabic, _ as stripDiacritics, te as useMilestoneWatcher, k as useMithaqHold, j as useMithaqStore, h as useWheelHoverStore };
 
 //# sourceMappingURL=index.es.js.map

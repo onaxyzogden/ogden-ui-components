@@ -1,0 +1,59 @@
+/* ── Pillar Level Page — board layout wrapper ── */
+
+.fpb-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+}
+
+.fpb-layout {
+  display: flex;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.fpb-content {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+/* Cross-fade layers: both children occupy the same grid cell so they overlap. */
+.fpb-content__layer {
+  grid-area: 1 / 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.fpb-content__layer--in {
+  animation: fpbFadeIn 300ms var(--ease) both;
+}
+.fpb-content__layer--out {
+  animation: fpbFadeOut 300ms var(--ease) both;
+  pointer-events: none;
+}
+@keyframes fpbFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes fpbFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+  .fpb-page-wrapper {
+    padding: var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .fpb-page-wrapper {
+    padding: var(--space-2);
+  }
+}

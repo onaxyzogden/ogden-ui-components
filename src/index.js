@@ -21,3 +21,6 @@ export { default as useMilestoneWatcher } from './hooks/useMilestoneWatcher';
 export { default as useMithaqHold } from './hooks/useMithaqHold';
 
 export { stripDiacritics, formatArabic } from './utils/arabic';
+
+export { default as MaqasidLevelOverview } from './components/educational/MaqasidLevelOverview.jsx';
+export { default as PillarLevelPage } from './components/educational/PillarLevelPage.jsx';

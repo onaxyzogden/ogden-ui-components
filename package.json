@@ -1,6 +1,6 @@
 {
   "name": "@ogden/ui-components",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Shared React UI components for the OGDEN ecosystem (MILOS, Atlas, Moontrance)",
   "keywords": [
     "react",
