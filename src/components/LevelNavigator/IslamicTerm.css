@@ -1,0 +1,121 @@
+/* IslamicTerm — hover tooltip for Islamic/Arabic terms */
+
+.islamic-term {
+  display: inline;
+  cursor: help;
+  text-decoration: underline dotted var(--accent, #c9a05a);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  border-radius: var(--radius-xs, 2px);
+}
+
+.islamic-term:focus-visible {
+  outline: 2px solid var(--accent, #c9a05a);
+  outline-offset: 1px;
+}
+
+/* Tooltip box (rendered via portal at body level) */
+.islamic-term__tooltip {
+  position: fixed;
+  width: 252px;
+  background: var(--surface, #0c1a20);
+  border: 1px solid var(--border2, rgba(255, 255, 255, 0.12));
+  border-radius: var(--radius-sm, 6px);
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.35));
+  padding: var(--space-3, 12px) var(--space-4, 16px);
+  z-index: 10000;
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+
+  animation: islamic-term-fade var(--duration-sm, 180ms) var(--ease, cubic-bezier(0.2, 0.8, 0.2, 1)) both;
+}
+
+@keyframes islamic-term-fade {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Caret: default = arrow pointing DOWN (tooltip above term) */
+.islamic-term__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--border2, rgba(255, 255, 255, 0.12));
+}
+
+.islamic-term__tooltip::before {
+  content: '';
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--surface, #0c1a20);
+  z-index: 1;
+}
+
+/* Caret: flipped = arrow pointing UP (tooltip below term) */
+.islamic-term__tooltip--below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: var(--border2, rgba(255, 255, 255, 0.12));
+}
+
+.islamic-term__tooltip--below::before {
+  top: auto;
+  bottom: calc(100% - 1px);
+  border-top-color: transparent;
+  border-bottom-color: var(--surface, #0c1a20);
+}
+
+.islamic-term__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2, 8px);
+}
+
+.islamic-term__name {
+  font-size: var(--text-sm-plus, 14px);
+  font-weight: 600;
+  color: var(--text, #f3efe4);
+  letter-spacing: 0.01em;
+}
+
+.islamic-term__arabic {
+  font-family: var(--font-arabic, 'Amiri', 'Scheherazade', serif);
+  font-size: var(--text-md, 16px);
+  color: var(--accent, #c9a05a);
+  direction: rtl;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.islamic-term__trans {
+  font-size: var(--text-2xs, 10px);
+  color: var(--text3, #8a8478);
+  font-style: italic;
+  margin-top: -2px;
+}
+
+.islamic-term__meaning {
+  font-size: var(--text-sm-plus, 14px);
+  color: var(--text2, #d9d4c3);
+  line-height: 1.55;
+}
+
+.islamic-term__source {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: var(--text-2xs, 10px);
+  color: var(--text3, #8a8478);
+  border-top: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+  padding-top: var(--space-1, 4px);
+  margin-top: var(--space-1, 4px);
+}

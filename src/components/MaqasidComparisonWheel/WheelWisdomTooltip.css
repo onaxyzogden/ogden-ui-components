@@ -1,0 +1,54 @@
+.wwt-card {
+  position: fixed;
+  width: 260px;
+  padding: 12px 14px;
+  background: rgba(12, 26, 32, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid;
+  border-radius: 8px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  pointer-events: none;
+  z-index: 9999;
+  animation: wwt-fade 180ms ease-out both;
+}
+
+@keyframes wwt-fade {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wwt-arabic {
+  font-family: 'Amiri', 'Scheherazade', 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #f3efe4;
+  text-align: right;
+  direction: rtl;
+  margin-bottom: 6px;
+}
+
+.wwt-english {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  color: #d9d4c3;
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+
+.wwt-citation {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wwt-card {
+    animation: none;
+  }
+}

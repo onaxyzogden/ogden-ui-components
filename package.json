@@ -1,0 +1,72 @@
+{
+  "name": "@ogden/ui-components",
+  "version": "0.1.0",
+  "description": "Shared React UI components for the OGDEN ecosystem (MILOS, Atlas, Moontrance)",
+  "keywords": [
+    "react",
+    "components",
+    "maqasid",
+    "islamic",
+    "ogden",
+    "milos",
+    "atlas"
+  ],
+  "author": "Yousef Abdelsalam <yousef@ogden.ag>",
+  "license": "MIT",
+  "homepage": "https://github.com/onaxyzogden/ogden-ui-components#readme",
+  "bugs": {
+    "url": "https://github.com/onaxyzogden/ogden-ui-components/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onaxyzogden/ogden-ui-components.git"
+  },
+  "type": "module",
+  "main": "./dist/ogden-ui-components.cjs.js",
+  "module": "./dist/ogden-ui-components.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/ogden-ui-components.es.js",
+      "require": "./dist/ogden-ui-components.cjs.js"
+    },
+    "./style.css": "./dist/ogden-ui-components.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .js,.jsx",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "react-router-dom": "^6.0.0 || ^7.0.0",
+    "lucide-react": "^1.0.0",
+    "zustand": "^4.0.0 || ^5.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.6.1",
+    "lucide-react": "^1.8.0",
+    "zustand": "^5.0.5",
+    "vite": "^8.0.3",
+    "vite-plugin-dts": "^4.5.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
