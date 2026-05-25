@@ -330,7 +330,10 @@ export default function MaqasidComparisonWheel({
           const startDeg = startOffset + i * arcSize;
           const endDeg = startOffset + (i + 1) * arcSize;
           const pct = Math.max(0, Math.min(100, seg.current));
-          const currentR = HUB_R + (PROGRESS_MAX_R - HUB_R) * (pct / 100);
+          // Progress fills from the outer rim inward toward the hub: the outer
+          // edge is fixed at PROGRESS_MAX_R, the inner edge moves down toward
+          // HUB_R as completion rises (full wedge at 100%, sliver at the rim near 0%).
+          const fillInnerR = PROGRESS_MAX_R - (PROGRESS_MAX_R - HUB_R) * (pct / 100);
           const isHovered = effectiveHover === seg.id;
           const isEmpty = pct === 0;
           const isComplete = pct >= 100;
@@ -371,13 +374,13 @@ export default function MaqasidComparisonWheel({
                 <>
                   <path
                     key={`fill-${seg.id}-${bucket}`}
-                    d={annularSector(HUB_R, currentR, startDeg, endDeg)}
+                    d={annularSector(fillInnerR, PROGRESS_MAX_R, startDeg, endDeg)}
                     fill={seg.color || 'url(#mcw-progress-grad)'}
                     className={`mcw-seg-current${hov}`}
                     style={{ animationDelay: `${i * 80}ms`, opacity: seg.color ? 0.85 : undefined }}
                   />
                   <path
-                    d={annularSector(HUB_R, currentR, startDeg, endDeg)}
+                    d={annularSector(fillInnerR, PROGRESS_MAX_R, startDeg, endDeg)}
                     fill={`url(#${patternId})`}
                     className={`mcw-seg-pattern${hov}`}
                     pointerEvents="none"
