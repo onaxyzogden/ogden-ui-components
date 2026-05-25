@@ -805,7 +805,7 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 						})
 					] }),
 					l.map((e, t) => {
-						let n = X + t * Y, r = X + (t + 1) * Y, i = Math.max(0, Math.min(100, e.current)), a = V + (H - V) * (i / 100), o = Z === e.id, s = i === 0, c = i >= 100, l = Math.round(i / 5), u = o ? " is-hovered" : "";
+						let n = X + t * Y, r = X + (t + 1) * Y, i = Math.max(0, Math.min(100, e.current)), a = H - (H - V) * (i / 100), o = Z === e.id, s = i === 0, c = i >= 100, l = Math.round(i / 5), u = o ? " is-hovered" : "";
 						return /* @__PURE__ */ p("g", {
 							role: e.route ? "button" : "img",
 							tabIndex: e.route ? 0 : void 0,
@@ -833,7 +833,7 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 									className: `mcw-seg-empty${u}`
 								}),
 								i > 0 && /* @__PURE__ */ p(d, { children: [/* @__PURE__ */ f("path", {
-									d: ue(V, a, n, r),
+									d: ue(a, H, n, r),
 									fill: e.color || "url(#mcw-progress-grad)",
 									className: `mcw-seg-current${u}`,
 									style: {
@@ -841,7 +841,7 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 										opacity: e.color ? .85 : void 0
 									}
 								}, `fill-${e.id}-${l}`), /* @__PURE__ */ f("path", {
-									d: ue(V, a, n, r),
+									d: ue(a, H, n, r),
 									fill: `url(#${Ae})`,
 									className: `mcw-seg-pattern${u}`,
 									pointerEvents: "none"
