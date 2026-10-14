@@ -169,7 +169,6 @@ export default function LevelNavigator({
         onClick={() => prev && handlePrev()}
         role={prev ? 'button' : undefined}
         tabIndex={prev ? 0 : undefined}
-        aria-label={prev ? `Navigate to previous level: ${prev.title}` : undefined}
         onKeyDown={prev ? (e) => e.key === 'Enter' && handlePrev() : undefined}
       >
         {prev ? (
@@ -178,6 +177,8 @@ export default function LevelNavigator({
               <span className="fln__side-label" style={{ color: prev.color }}>{prev.label}</span>
               <span className="fln__side-subtitle">{prev.subtitle}</span>
               <span className="fln__side-title">{prev.title}</span>
+              {/* Name comes from the visible text (WCAG 2.5.3); this adds the direction. */}
+              <span className="fln__sr-only"> (previous level)</span>
             </div>
             <ChevronLeft className="fln__chevron" style={{ color: prev.color }} size={36} strokeWidth={1.5} />
           </>
@@ -216,9 +217,6 @@ export default function LevelNavigator({
                     onMouseLeave={() => setHoveredPillar(null)}
                     onFocus={() => setHoveredPillar(id)}
                     onBlur={() => setHoveredPillar(null)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => e.key === 'Enter' && handleSegClick()}
                   >
                     <div className="fln__segment-bar">
                       {tasks.length > 0 ? tasks.map((task) => (
@@ -283,7 +281,6 @@ export default function LevelNavigator({
         onClick={() => next && handleNext()}
         role={next ? 'button' : undefined}
         tabIndex={next ? 0 : undefined}
-        aria-label={next ? `Navigate to next level: ${next.title}` : undefined}
         onKeyDown={next ? (e) => e.key === 'Enter' && handleNext() : undefined}
       >
         {next ? (
@@ -293,6 +290,8 @@ export default function LevelNavigator({
               <span className="fln__side-label" style={{ color: next.color }}>{next.label}</span>
               <span className="fln__side-subtitle">{next.subtitle}</span>
               <span className="fln__side-title">{next.title}</span>
+              {/* Name comes from the visible text (WCAG 2.5.3); this adds the direction. */}
+              <span className="fln__sr-only"> (next level)</span>
             </div>
           </>
         ) : (

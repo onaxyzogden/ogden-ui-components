@@ -273,7 +273,9 @@ export default function MaqasidComparisonWheel({
       <svg
         viewBox="0 0 400 400"
         className={`mcw-svg${isDormant ? ' mcw-svg--dormant' : ''}${isLit || forceConverged ? ' mcw-svg--lit' : ''}${isIgniting ? ' mcw-svg--igniting' : ''}${forceConverged ? ' mcw-svg--converged' : ''}`}
-        role="img"
+        // group, not img: an img's children are presentational, which would
+        // hide the role="button" segments inside from assistive tech.
+        role="group"
         aria-label={`${centerLabel} comparison wheel`}
         style={{
           '--mcw-level-color': palette.base,

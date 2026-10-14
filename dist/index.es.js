@@ -148,7 +148,6 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 				onClick: () => B && I(),
 				role: B ? "button" : void 0,
 				tabIndex: B ? 0 : void 0,
-				"aria-label": B ? `Navigate to previous level: ${B.title}` : void 0,
 				onKeyDown: B ? (e) => e.key === "Enter" && I() : void 0,
 				children: B ? /* @__PURE__ */ p(d, { children: [/* @__PURE__ */ p("div", {
 					className: "fln__side-text",
@@ -165,6 +164,10 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 						/* @__PURE__ */ f("span", {
 							className: "fln__side-title",
 							children: B.title
+						}),
+						/* @__PURE__ */ f("span", {
+							className: "fln__sr-only",
+							children: " (previous level)"
 						})
 					]
 				}), /* @__PURE__ */ f(s, {
@@ -215,9 +218,6 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 									onMouseLeave: () => U(null),
 									onFocus: () => U(t),
 									onBlur: () => U(null),
-									role: "button",
-									tabIndex: 0,
-									onKeyDown: (e) => e.key === "Enter" && s(),
 									children: [/* @__PURE__ */ f("div", {
 										className: "fln__segment-bar",
 										children: a.length > 0 ? a.map((e) => /* @__PURE__ */ f("button", {
@@ -264,7 +264,6 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 				onClick: () => V && ne(),
 				role: V ? "button" : void 0,
 				tabIndex: V ? 0 : void 0,
-				"aria-label": V ? `Navigate to next level: ${V.title}` : void 0,
 				onKeyDown: V ? (e) => e.key === "Enter" && ne() : void 0,
 				children: V ? /* @__PURE__ */ p(d, { children: [/* @__PURE__ */ f(c, {
 					className: "fln__chevron",
@@ -286,6 +285,10 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 						/* @__PURE__ */ f("span", {
 							className: "fln__side-title",
 							children: V.title
+						}),
+						/* @__PURE__ */ f("span", {
+							className: "fln__sr-only",
+							children: " (next level)"
 						})
 					]
 				})] }) : /* @__PURE__ */ f("div", { className: "fln__side-empty" })
@@ -668,7 +671,7 @@ function fe({ centerLabel: e = "FAITH", levelColor: t = "#4ab8a8", levelPattern:
 			/* @__PURE__ */ p("svg", {
 				viewBox: "0 0 400 400",
 				className: `mcw-svg${K ? " mcw-svg--dormant" : ""}${G || y ? " mcw-svg--lit" : ""}${q ? " mcw-svg--igniting" : ""}${y ? " mcw-svg--converged" : ""}`,
-				role: "img",
+				role: "group",
 				"aria-label": `${e} comparison wheel`,
 				style: {
 					"--mcw-level-color": J.base,
