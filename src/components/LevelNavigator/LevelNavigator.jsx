@@ -174,7 +174,7 @@ export default function LevelNavigator({
         {prev ? (
           <>
             <div className="fln__side-text">
-              <span className="fln__side-label" style={{ color: prev.color }}>{prev.label}</span>
+              <span className="fln__side-label" style={{ '--lvl-color': prev.color }}>{prev.label}</span>
               <span className="fln__side-subtitle">{prev.subtitle}</span>
               <span className="fln__side-title">{prev.title}</span>
               {/* Name comes from the visible text (WCAG 2.5.3); this adds the direction. */}
@@ -190,7 +190,7 @@ export default function LevelNavigator({
       <div className="fln__center" aria-live="polite">
         <div key={activeIdx} className={`fln__level-content${slideDir ? ` fln__level-content--${slideDir}` : ''}`}>
           <div className="fln__center-head">
-            <span className="fln__center-label" style={{ color: active.color }}>{active.label}</span>
+            <span className="fln__center-label" style={{ '--lvl-color': active.color }}>{active.label}</span>
             <span className="fln__center-subtitle">{active.subtitle}</span>
           </div>
           <h2 className="fln__center-title">{active.title}</h2>
@@ -287,7 +287,7 @@ export default function LevelNavigator({
           <>
             <ChevronRight className="fln__chevron" style={{ color: next.color }} size={36} strokeWidth={1.5} />
             <div className="fln__side-text fln__side-text--right">
-              <span className="fln__side-label" style={{ color: next.color }}>{next.label}</span>
+              <span className="fln__side-label" style={{ '--lvl-color': next.color }}>{next.label}</span>
               <span className="fln__side-subtitle">{next.subtitle}</span>
               <span className="fln__side-title">{next.title}</span>
               {/* Name comes from the visible text (WCAG 2.5.3); this adds the direction. */}

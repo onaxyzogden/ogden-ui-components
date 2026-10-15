@@ -37,8 +37,7 @@
   gap: var(--space-3, 12px);
   padding: var(--space-6, 24px);
   border-radius: var(--radius-lg, 12px);
-  opacity: 0.45;
-  transition: opacity 0.2s ease, background 0.2s ease;
+  transition: background 0.2s ease;
   min-width: 0;
 }
 
@@ -47,7 +46,6 @@
 }
 
 .fln__side--active:hover {
-  opacity: 0.85;
   background: var(--surface, rgba(255, 255, 255, 0.04));
 }
 
@@ -66,6 +64,10 @@
 .fln__side-text--right { text-align: left; }
 
 .fln__side-label {
+  /* --lvl-color is the raw level colour (set inline). Mixing 60% of it into
+     --text keeps the hue and passes 4.5:1 in light and dark themes. */
+  color: var(--lvl-color);
+  color: color-mix(in oklab, var(--lvl-color) 60%, var(--text, #f3efe4));
   font-size: var(--text-xs, 11px);
   font-weight: 700;
   text-transform: uppercase;
@@ -76,7 +78,7 @@
 
 .fln__side-subtitle {
   font-size: var(--text-xs, 11px);
-  color: var(--text3, #8a8478);
+  color: var(--text2, #d9d4c3);
   font-family: var(--font-heading, 'Cinzel', 'Times New Roman', serif);
   white-space: nowrap;
 }
@@ -90,7 +92,15 @@
   text-overflow: ellipsis;
 }
 
-.fln__chevron { flex-shrink: 0; }
+/* The side panels used to fade as a whole (opacity 0.45), which took their text
+   below 4.5:1 (WCAG 1.4.3). Only the chevron fades now; size and position
+   keep the panel secondary. */
+.fln__chevron {
+  flex-shrink: 0;
+  opacity: 0.45;
+  transition: opacity 0.2s ease;
+}
+.fln__side--active:hover .fln__chevron { opacity: 1; }
 
 .fln__sr-only {
   position: absolute;
@@ -124,6 +134,8 @@
 }
 
 .fln__center-label {
+  color: var(--lvl-color);
+  color: color-mix(in oklab, var(--lvl-color) 60%, var(--text, #f3efe4));
   font-size: var(--text-xs, 11px);
   font-weight: 700;
   text-transform: uppercase;

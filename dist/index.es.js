@@ -154,7 +154,7 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 					children: [
 						/* @__PURE__ */ f("span", {
 							className: "fln__side-label",
-							style: { color: B.color },
+							style: { "--lvl-color": B.color },
 							children: B.label
 						}),
 						/* @__PURE__ */ f("span", {
@@ -187,7 +187,7 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 							className: "fln__center-head",
 							children: [/* @__PURE__ */ f("span", {
 								className: "fln__center-label",
-								style: { color: z.color },
+								style: { "--lvl-color": z.color },
 								children: z.label
 							}), /* @__PURE__ */ f("span", {
 								className: "fln__center-subtitle",
@@ -275,7 +275,7 @@ function T({ pillars: r = [], pillarTasks: l = {}, storageKey: u, controlledLeve
 					children: [
 						/* @__PURE__ */ f("span", {
 							className: "fln__side-label",
-							style: { color: V.color },
+							style: { "--lvl-color": V.color },
 							children: V.label
 						}),
 						/* @__PURE__ */ f("span", {
