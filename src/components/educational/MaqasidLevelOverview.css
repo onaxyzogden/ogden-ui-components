@@ -201,7 +201,7 @@
    Promoted from FloRedesignTestPage (2026-04-23). Scholar-led contemplative
    language applied to the shared overview page for all 7 pillars:
      - Editorial serif on Navigator titles (center + sibling peers)
-     - Calm-peer opacity on sibling tiers (60%) — not ghost-text
+     - Calm-peer sibling tiers: chevron at 60% opacity, text at full contrast
      - Level-tinted halo on active center card
      - Container-less wheel with blurred pillar-tinted aura
      - Bento Active Neutrality — ghost STROKE on 0% cards, full title legibility
@@ -218,10 +218,12 @@
   margin: 0 0 var(--space-3);
 }
 
-.flo .fln__side {
+/* Dim only the chevron, not the panel: fading the whole panel took its text
+   below 4.5:1 (WCAG 1.4.3). One step lighter than the LevelNavigator default. */
+.flo .fln__chevron {
   opacity: 0.6;
 }
-.flo .fln__side--active:hover {
+.flo .fln__side--active:hover .fln__chevron {
   opacity: 0.9;
 }
 
